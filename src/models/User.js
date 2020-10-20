@@ -9,6 +9,9 @@ const UserSchema = mongoose.Schema({
     },
     avatar: {
         type: Object
+    },
+    history: {
+        type: String
     }
 })
 
