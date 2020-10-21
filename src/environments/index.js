@@ -4,7 +4,7 @@ require('dotenv').config()
 const PORT = process.env.PORT || 5000
 
 //Database
-const DATABASE_NAME = process.env.DATABASE_NAME || 'APIdemo'
+const DATABASE_NAME = process.env.DATABASE_NAME || 'Booking'
 const MONGO_URL = process.env.MONGO_URL || `mongodb+srv://khiem20tc:01239335976@cluster0.licvf.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
 
 //Jsonwebtoken

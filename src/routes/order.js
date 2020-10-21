@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { OrderEntity } = require('../models');
+const { checkAuth } = require('../middlewares');
+const { Router } = require('express');
 
 router.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -8,7 +10,7 @@ router.all('/', function(req, res, next) {
     next()
   });
 
-routes.post('/Order', function(req, res) {
+router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
     try{
       const order = new OrderEntity({
       ID: req.body.ID,
@@ -27,7 +29,7 @@ routes.post('/Order', function(req, res) {
 }
 })
 
-router.get('/Order/:ID', async(req,res)=>{
+router.get('/:ID', async(req,res) => {
   try {
       const order = await OrderEntity.find({ID: req.params.ID});
       res.status(200).json(order);
@@ -37,7 +39,7 @@ router.get('/Order/:ID', async(req,res)=>{
   }
 })
 
-routes.put('/Order/:ID', function(req, res) {
+router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'shipper'), async(req,res) => {
   try {
     const order = await OrderEntity.updateOne(
         {_id: req.params.ID}, 
@@ -51,7 +53,21 @@ routes.put('/Order/:ID', function(req, res) {
 }
 })
 
-routes.put('/Order/:ID', function(req, res) {
+router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
+  try {
+    const order = await OrderEntity.updateOne(
+        {_id: req.params.ID}, 
+        {$set: { 
+            State: 'Cancel'
+          }}
+        );
+    res.status(200).json(req.body.State);
+} catch(err) {
+    res.json({msg: err});
+}
+})
+
+router.put('/:ID', async(req, res) => {
   try {
     const order = await OrderEntity.updateOne(
         {_id: req.params.ID}, 

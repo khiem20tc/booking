@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/index.js"
   },
-  "author": "",
+  "author": "khiem20tc <53548789+khiem20tc@users.noreply.github.com>",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -19,5 +19,6 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "route": "^0.2.5"
-  }
+  },
+  "repository": "https://github.com/khiem20tc/booking.git"
 }

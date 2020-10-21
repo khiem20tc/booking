@@ -39,7 +39,8 @@ router.post('/signin', async(req,res)=>{
         const hashedPassword = await hashPassword(req.body.password)
         const user = new UserEntity({
             userName: req.body.userName,
-            password: hashedPassword
+            password: hashedPassword,
+            role: req.body.role,
         });
         const user_ = await UserEntity.findOne({userName: req.body.userName});
         if (user_ == null) {
@@ -80,7 +81,7 @@ router.get('/:id', async(req,res)=>{
     }
 })
 
-router.delete('/:id', async(req,res)=>{
+router.delete('/:id', (req, res, next) => checkAuth(req, res, next, 'manager'), async(req,res) => {
     try {
         const userRemoved = await UserEntity.remove({_id: req.params.id});
         res.status(200).json({msg: 'deleted'});
@@ -95,8 +96,20 @@ router.put('/:id', async(req,res)=>{
         const userUpdated = await UserEntity.updateOne(
             {_id: req.params.id}, 
             {$set: { 
-                userName: req.body.userName,
                 password: hashedPassword}}
+            );
+        res.status(200).json({msg: 'Updated'});
+    } catch(err) {
+        res.json({msg: err});
+    }
+})
+
+router.put('/setHistory/:id', async(req,res)=>{
+    try {
+        const userUpdated = await UserEntity.updateOne(
+            {_id: req.params.id}, 
+            {$set: { 
+                history: req.body.history}}
             );
         res.status(200).json({msg: 'Updated'});
     } catch(err) {
