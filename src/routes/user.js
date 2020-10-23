@@ -4,122 +4,128 @@ const bcrypt = require('bcrypt');
 const { UserEntity } = require('../models');
 const { upload } = require('../middlewares');
 const { generateToken, verifyToken, hashPassword, comparePassword } = require('../utils')
+const { checkAuth } = require('../middlewares');
 
-router.all('/', function(req, res, next) {
+router.all('/', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next()
-  });
+});
 
-router.put('/setAvatar/:id', upload.single('csv'), async(req,res) => {
+router.put('/setAvatar/:id', upload.single('csv'), async (req, res) => {
     try {
         const userUpdated = await UserEntity.updateOne(
-            {_id: req.params.id}, 
-            {$set: { 
-                avatar: req.file
-                }}
-            );
+            { _id: req.params.id },
+            {
+                $set: {
+                    avatar: req.file
+                }
+            }
+        );
         res.status(200).send(req.file);
-    }catch(err) {
-        res.send(400).json({error: err});;
+    } catch (err) {
+        res.send(400).json({ error: err });;
     }
 })
 
-router.get('/', async(req,res)=>{
+router.get('/', async (req, res) => {
     try {
         const user = await UserEntity.find();
         res.status(200).json(user);
-    } catch(err) {
-        res.status(400).json({error: err});
+    } catch (err) {
+        res.status(400).json({ error: err });
     }
 })
 
-router.post('/signin', async(req,res)=>{
+router.post('/signup', async (req, res) => {
     try {
-        if(!req.body.password) res.status(400).json({error: 'Please set your password'});
+        if (!req.body.password) res.status(400).json({ error: 'Please set your password' });
         const hashedPassword = await hashPassword(req.body.password)
         const user = new UserEntity({
             userName: req.body.userName,
             password: hashedPassword,
             role: req.body.role
         });
-        const user_ = await UserEntity.findOne({userName: req.body.userName});
+        const user_ = await UserEntity.findOne({ userName: req.body.userName });
         if (user_ == null) {
-        const savedUser = await user.save();
-        res.status(200).json(savedUser);
+            const savedUser = await user.save();
+            res.status(200).json(savedUser);
         }
         else res.status(400).send('User is already exist');
-    } catch(err) {
-        res.json({error: err});
+    } catch (err) {
+        res.json({ error: err });
     }
 })
 
-router.post('/login', async(req,res)=>{
-    const user = await UserEntity.findOne({userName: req.body.userName});
+router.post('/login', async (req, res) => {
+    const user = await UserEntity.findOne({ userName: req.body.userName });
     console.log(user);
-    if(user == null){
+    if (user == null) {
         return res.status(400).send('User is not found');
     }
     try {
-        if (await comparePassword(req.body.password, user.password)){
-            res.status(200).send(`Welcome ${user.userName}`)
+        if (await comparePassword(req.body.password, user.password)) {
             const token = await generateToken(user);
             console.log(token);
+            res.status(200).json({message: `Welcome ${user.userName}`, token: token})
         }
         else {
             res.status(500).send("Password wrong !! Please try again")
         }
-    } catch(err) {
-        res.status(400).json({error: err});
+    } catch (err) {
+        res.status(400).json({ error: err });
     }
 })
 
-router.get('/:id', async(req,res)=>{
+router.get('/:id', async (req, res) => {
     try {
-        const user = await UserEntity.find({_id: req.params.id});
+        const user = await UserEntity.find({ _id: req.params.id });
         res.status(200).json(user);
-    } catch(err) {
-        res.json({error: err});
+    } catch (err) {
+        res.json({ error: err });
         res.status(404);
     }
 })
 
-router.delete('/:id', (req, res, next) => checkAuth(req, res, next, 'manager'), async(req,res) => {
+router.delete('/:id', (req, res, next) => checkAuth(req, res, next, 'manager'), async (req, res) => {
     try {
-        const userRemoved = await UserEntity.remove({_id: req.params.id});
-        res.status(200).json({error: 'deleted'});
-    } catch(err) {
-        res.status(400).json({error: err});
+        const userRemoved = await UserEntity.remove({ _id: req.params.id });
+        res.status(200).json({ error: 'deleted' });
+    } catch (err) {
+        res.status(400).json({ error: err });
     }
 })
 
-router.put('/:id', async(req,res)=>{
+router.put('/:id', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const userUpdated = await UserEntity.updateOne(
-            {_id: req.params.id}, 
-            {$set: { 
-                password: hashedPassword,
-                role: req.body.role
+            { _id: req.params.id },
+            {
+                $set: {
+                    password: hashedPassword
                 }
-                }
-            );
-        res.status(200).json({message: 'Updated'});
-    } catch(err) {
-        res.status(400).json({error: err});
+            }
+        );
+        res.status(200).json({ message: 'Password has changed' });
+    } catch (err) {
+        res.status(400).json({ error: err });
     }
 })
 
-router.put('/setHistory/:id', (req, res, next) => checkAuth(req, res, next, 'manager'), async(req,res)=>{
+router.put('/setHistory/:id', (req, res, next) => checkAuth(req, res, next, 'manager'), async (req, res) => {
     try {
         const userUpdated = await UserEntity.updateOne(
-            {_id: req.params.id}, 
-            {$set: { 
-                history: req.body.history}}
-            );
-        res.status(200).json({message: 'Set history successfully'});
-    } catch(err) {
-        res.status(400).json({error: err});
+            { _id: req.params.id },
+            {
+                $push: {
+                    history: req.body.history
+                }
+            }
+        );
+        res.status(200).json({ message: 'Set history successfully' });
+    } catch (err) {
+        res.status(400).json({ error: err });
     }
 })
 

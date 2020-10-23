@@ -1,6 +1,7 @@
 const { verifyToken } = require('../../utils')
 
-const checkAuth = async (req, res, next, role) => {
+
+const checkAuth = async(req, res, next, role)=>{
     try {
         const token = req.headers.authorization.split(' ')[1]
         const decode = await verifyToken(token)

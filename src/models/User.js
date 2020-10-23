@@ -14,7 +14,7 @@ const UserSchema = mongoose.Schema({
         type: Object
     },
     history: {
-        type: String
+        type: Array
     }
 })
 

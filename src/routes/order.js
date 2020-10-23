@@ -19,33 +19,28 @@ router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer')
       State: req.body.State
     });
     const order_ = await OrderEntity.findOne({ID: req.body.ID});
-    if (order_ == null) {
+    if (!order_) {
     const savedOrder = await order.save();
-    res.status(200).json(savedOrder);
+    return res.status(200).json(savedOrder);
     }
     } catch(err) {
-    res.status(400).json({msg: err});
+    return res.status(400).json({msg: err});
 }
 })
 
-router.get('/:ID', async(req,res) => {
+router.get('/', async(req,res) => {
   try {
-      const order = await OrderEntity.find({ID: req.params.ID});
+      const order = await OrderEntity.find();
       res.status(200).json(order);
   } catch(err) {
-<<<<<<< HEAD
       res.status(400).json({msg: err});
-=======
-      res.json({msg: err});
-      res.status(400).status(404);
->>>>>>> ce534da70adceacb4b17c9ee05fc3c6101953358
   }
 })
 
 router.put('/:ID/setstate', (req, res, next) => checkAuth(req, res, next, 'shipper'), async(req,res) => {
   try {
     const order = await OrderEntity.updateOne(
-        {_id: req.params.ID}, 
+        {ID: req.params.ID}, 
         {$set: { 
             State: req.body.State
           }}
@@ -59,12 +54,12 @@ router.put('/:ID/setstate', (req, res, next) => checkAuth(req, res, next, 'shipp
 router.put('/:ID/cancel', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
   try {
     const order = await OrderEntity.updateOne(
-        {_id: req.params.ID}, 
+        {ID: req.params.ID}, 
         {$set: { 
-            State: 'Cancel'
+            State: "Cancel"
           }}
         );
-    res.status(200).json(req.body.State);
+    res.status(200).send({massage: "Cancel sucessfully"});
 } catch(err) {
     res.status(400).json({msg: err});
 }
@@ -73,7 +68,7 @@ router.put('/:ID/cancel', (req, res, next) => checkAuth(req, res, next, 'custome
 router.put('/:ID/report', async(req, res) => {
   try {
     const order = await OrderEntity.updateOne(
-        {_id: req.params.ID}, 
+        {ID: req.params.ID}, 
         {$set: { 
             Report: req.body.Report
           }}

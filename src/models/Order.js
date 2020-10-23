@@ -17,7 +17,7 @@ const OrderSchema = mongoose.Schema({
         type: String
     },
     Report: {
-        type: Boolean
+        type: String
     }
 })
 
