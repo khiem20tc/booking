@@ -33,7 +33,12 @@ router.get('/:ID', async(req,res) => {
       const order = await OrderEntity.find({ID: req.params.ID});
       res.status(200).json(order);
   } catch(err) {
+<<<<<<< HEAD
       res.status(400).json({msg: err});
+=======
+      res.json({msg: err});
+      res.status(400).status(404);
+>>>>>>> ce534da70adceacb4b17c9ee05fc3c6101953358
   }
 })
 
