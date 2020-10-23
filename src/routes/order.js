@@ -24,7 +24,7 @@ router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer')
     res.status(200).json(savedOrder);
     }
     } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
@@ -34,7 +34,7 @@ router.get('/:ID', async(req,res) => {
       res.status(200).json(order);
   } catch(err) {
       res.json({msg: err});
-      res.status(404);
+      res.status(400).status(404);
   }
 })
 
@@ -48,7 +48,7 @@ router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'shipper'), asy
         );
     res.status(200).json(req.body.State);
 } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
@@ -62,7 +62,7 @@ router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'customer'), as
         );
     res.status(200).json(req.body.State);
 } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
@@ -76,7 +76,7 @@ router.put('/:ID', async(req, res) => {
         );
     res.status(200).json(req.body.Report);
 } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
