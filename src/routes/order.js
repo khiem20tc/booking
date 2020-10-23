@@ -24,7 +24,7 @@ router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer')
     res.status(200).json(savedOrder);
     }
     } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
@@ -33,12 +33,11 @@ router.get('/:ID', async(req,res) => {
       const order = await OrderEntity.find({ID: req.params.ID});
       res.status(200).json(order);
   } catch(err) {
-      res.json({msg: err});
-      res.status(404);
+      res.status(400).json({msg: err});
   }
 })
 
-router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'shipper'), async(req,res) => {
+router.put('/:ID/setstate', (req, res, next) => checkAuth(req, res, next, 'shipper'), async(req,res) => {
   try {
     const order = await OrderEntity.updateOne(
         {_id: req.params.ID}, 
@@ -48,11 +47,11 @@ router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'shipper'), asy
         );
     res.status(200).json(req.body.State);
 } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
-router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
+router.put('/:ID/cancel', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
   try {
     const order = await OrderEntity.updateOne(
         {_id: req.params.ID}, 
@@ -62,11 +61,11 @@ router.put('/:ID', (req, res, next) => checkAuth(req, res, next, 'customer'), as
         );
     res.status(200).json(req.body.State);
 } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
-router.put('/:ID', async(req, res) => {
+router.put('/:ID/report', async(req, res) => {
   try {
     const order = await OrderEntity.updateOne(
         {_id: req.params.ID}, 
@@ -76,7 +75,7 @@ router.put('/:ID', async(req, res) => {
         );
     res.status(200).json(req.body.Report);
 } catch(err) {
-    res.json({msg: err});
+    res.status(400).json({msg: err});
 }
 })
 
