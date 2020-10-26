@@ -10,6 +10,9 @@ const UserSchema = mongoose.Schema({
     role: {
         type: String
     },
+    address: {
+        type: String
+    },
     avatar: {
         type: Object
     },

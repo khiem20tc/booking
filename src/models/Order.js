@@ -5,10 +5,10 @@ const OrderSchema = mongoose.Schema({
         type: Number
     },
     Customer: {
-        type: Number
+        type: String
     },
     Shipper: {
-        type: Number
+        type: String
     },
     Value: {
         type: Number
@@ -16,7 +16,10 @@ const OrderSchema = mongoose.Schema({
     State: {
         type: String
     },
-    Report: {
+    ReportByCustomer: {
+        type: String
+    },
+    ReportByShipper: {
         type: String
     }
 })
