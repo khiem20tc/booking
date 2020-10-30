@@ -43,6 +43,7 @@ router.post('/signup', async (req, res) => {
         if (!req.body.password) res.status(400).json({ error: 'Please set your password' });
         const hashedPassword = await hashPassword(req.body.password)
         let address = keccak256(req.body.userName).toString('hex');
+        
         const user = new UserEntity({
             userName: req.body.userName,
             password: hashedPassword,
@@ -50,6 +51,7 @@ router.post('/signup', async (req, res) => {
             address: address
         });
         const user_ = await UserEntity.findOne({ userName: req.body.userName });
+        
         if (user_ == null) {
             const savedUser = await user.save();
             return res.status(200).json(savedUser);
@@ -69,7 +71,6 @@ router.post('/login', async (req, res) => {
     try {
         if (await comparePassword(req.body.password, user.password)) {
             const token = await generateToken(user);
-            console.log(token);
             return res.status(200).json({message: `Welcome ${user.userName}`, token: token})
         }
         else {
@@ -77,6 +78,17 @@ router.post('/login', async (req, res) => {
         }
     } catch (err) {
         return res.status(400).json({ error: err });
+    }
+})
+
+router.post('/checkrole', async(req,res) => {
+    try{
+        const token = req.headers.authorization.split(' ')[1];
+        const decode = await verifyToken(token);
+        return res.status(200).json({role: decode.role})
+    }
+    catch(err){
+        return res.status(400).json({msg: err});
     }
 })
 

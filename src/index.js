@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const cors = require('cors');
 
 const { PORT } = require('./environments')
 const { mongoose } = require('./helpers')
@@ -16,6 +17,7 @@ mongoose.connection.once('open', () =>
 	console.log('🌨  Connected successfully to mongo database')
 )
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname,'public')));
