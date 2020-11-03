@@ -56,7 +56,7 @@ router.post('/signup', async (req, res) => {
             const savedUser = await user.save();
             return res.status(200).json(savedUser);
         }
-        else return res.status(400).send('User is already exist');
+        else return res.status(400).json({msg: 'User is already exist'});
     } catch (err) {
         return res.json({ error: err });
     }
@@ -105,7 +105,7 @@ router.get('/:id', async (req, res) => {
 router.delete('/:id', (req, res, next) => checkAuth(req, res, next, 'manager'), async (req, res) => {
     try {
         const userRemoved = await UserEntity.remove({ _id: req.params.id });
-        return res.status(200).json({ error: 'deleted' });
+        return res.status(200).json({ msg: 'deleted' });
     } catch (err) {
         return res.status(400).json({ error: err });
     }

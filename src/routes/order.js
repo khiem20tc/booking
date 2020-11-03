@@ -40,6 +40,15 @@ router.get('/', async(req,res) => {
   }
 })
 
+router.get('/:ID', async(req,res) => {
+  try {
+      const order = await OrderEntity.findOne({ID: req.params.ID});
+      return res.status(200).json(order);
+  } catch(err) {
+      return res.status(400).json({msg: err});
+  }
+})
+
 router.put('/:ID/setstate', (req, res, next) => checkAuth(req, res, next, 'shipper'), async(req,res) => {
   try {
     const order_ = await OrderEntity.findOne({ID: req.params.ID})
