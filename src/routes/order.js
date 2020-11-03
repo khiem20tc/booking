@@ -94,7 +94,7 @@ router.put('/:ID/report', async(req, res) => {
         );
     return res.status(200).json(req.body.Report);
     }
-    else if (req.user.address == order_.Shipper) {
+    else if (decode.address == order_.Shipper) {
       const order = await OrderEntity.updateOne(
           {ID: req.params.ID}, 
           {$set: { 
