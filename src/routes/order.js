@@ -3,6 +3,7 @@ const router = express.Router();
 const { OrderEntity } = require('../models');
 const { checkAuth } = require('../middlewares');
 const { verifyToken } = require('../utils');
+const { UserEntity } = require('../models/User');
 
 router.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -12,12 +13,22 @@ router.all('/', function(req, res, next) {
 
 router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
     try{
+      const orderProcessing = await OrderEntity.find({$or:[{State: "Created"},{State: "Im coming"},{State: "Im going"}]});
+      //console.log(orderProcessing);
+      const array = [];
+      orderProcessing.forEach(async element => {await array.push(element.Shipper)});
+      //console.log(array);
+
+      const freeShipperList = await UserEntity.find({$and:[{role: "shipper"},{address:{$nin: array }}]});
+      //console.log(freeShipperList);
+      freeShipperList.forEach(async element => {await array.push(element.Shipper)});
+
       var time = new Date();
       let ID = time.getTime();
       const order = new OrderEntity({
       ID: ID,
       Customer: req.user.address,
-      Shipper: req.body.Shipper,
+      Shipper: array[0],
       Value: req.body.Value,
       State: "Created"
     });
