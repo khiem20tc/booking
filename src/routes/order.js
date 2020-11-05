@@ -4,6 +4,7 @@ const { OrderEntity } = require('../models');
 const { checkAuth } = require('../middlewares');
 const { verifyToken } = require('../utils');
 const { UserEntity } = require('../models/User');
+const Order = require('../models/Order');
 
 router.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -48,6 +49,17 @@ router.get('/', async(req,res) => {
       return res.status(200).json(order);
   } catch(err) {
       return res.status(400).json({msg: err});
+  }
+})
+
+router.get('/requestIDbyShipper', async(req,res) => {
+  try{
+    const token = req.headers.authorization.split(' ')[1];
+    const decode = await verifyToken(token);
+    const order = await OrderEntity.findOne({$and:[{Shipper: decode.address},{State: "Created"}]});
+    return res.status(200).json(order.ID);
+  } catch(err) {
+    return res.status(400).json({msg: err});
   }
 })
 
