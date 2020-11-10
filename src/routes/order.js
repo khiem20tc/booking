@@ -15,21 +15,23 @@ router.all('/', function(req, res, next) {
 router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer'), async(req,res) => {
     try{
       const orderProcessing = await OrderEntity.find({$or:[{State: "Created"},{State: "Im coming"},{State: "Im going"}]});
-      //console.log(orderProcessing);
+      console.log(orderProcessing);
       const array = [];
       orderProcessing.forEach(async element => {await array.push(element.Shipper)});
-      //console.log(array);
+      console.log(array);
 
       const freeShipperList = await UserEntity.find({$and:[{role: "shipper"},{address:{$nin: array }}]});
-      //console.log(freeShipperList);
-      freeShipperList.forEach(async element => {await array.push(element.Shipper)});
+      
+      console.log(freeShipperList);
+      
+      console.log(freeShipperList[0].address);
 
       var time = new Date();
       let ID = time.getTime();
-      const order = new OrderEntity({
+      const order = await new OrderEntity({
       ID: ID,
       Customer: req.user.address,
-      Shipper: array[0],
+      Shipper: freeShipperList[0].address,
       Value: req.body.Value,
       State: "Created"
     });
@@ -39,6 +41,7 @@ router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer')
     return res.status(200).json(savedOrder);
     }
     } catch(err) {
+    console.log(err);
     return res.status(400).json({msg: err});
 }
 })
@@ -56,8 +59,38 @@ router.get('/requestIDbyShipper', async(req,res) => {
   try{
     const token = req.headers.authorization.split(' ')[1];
     const decode = await verifyToken(token);
-    const order = await OrderEntity.findOne({$and:[{Shipper: decode.address},{State: "Created"}]});
+    const order = await OrderEntity.findOne({$and:[{Shipper: decode.address},{$or:[{State: "Created"},{State: "Im coming"},{State: "Im going"}]}]});
     return res.status(200).json(order.ID);
+  } catch(err) {
+    return res.status(400).json({msg: err});
+  }
+})
+
+router.get('/requestIDbyCustomer', async(req,res) => {
+  try{
+    const token = req.headers.authorization.split(' ')[1];
+    const decode = await verifyToken(token);
+    const order = await OrderEntity.find({$and:[{Customer: decode.address},{State: {$nin: ["I deliveried","Cancel"]}}]});
+    return res.status(200).json(order);
+  } catch(err) {
+    return res.status(400).json({msg: err});
+  }
+})
+
+router.get('/orderListByUser', async(req,res) => {
+  try{
+    const token = req.headers.authorization.split(' ')[1];
+    const decode = await verifyToken(token);
+    console.log(decode)
+    let order;
+    if (decode.role == "customer") 
+    {
+    order = await OrderEntity.find({Customer: `${decode.address}`});
+    }
+    else if (decode.role == "shipper") {
+    order = await OrderEntity.find({Shipper: `${decode.address}`});
+    }
+    return res.status(200).json(order);
   } catch(err) {
     return res.status(400).json({msg: err});
   }
