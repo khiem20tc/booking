@@ -33,7 +33,9 @@ router.post('/create', (req, res, next) => checkAuth(req, res, next, 'customer')
       Customer: req.user.address,
       Shipper: freeShipperList[0].address,
       Value: req.body.Value,
-      State: "Created"
+      State: "Created",
+      ReportByCustomer: "",
+      ReportByShipper: ""
     });
     const order_ = await OrderEntity.findOne({ID: req.body.ID});
     if (!order_) {
