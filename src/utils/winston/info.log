@@ -19,3 +19,123 @@
 [2020-11-17 14:56:38] [[32minfo[39m] API order/create : undefined
 [2020-11-17 14:57:18] [[32minfo[39m] API order/create : undefined
 [2020-11-17 14:57:19] [[32minfo[39m] API order/create sucessful : '{"_id":"5fb3825e68adc82d08fcdf1d","ID":1605599838758,"Customer":"75f2195bf4259e5f99dc39631c74304320999b86c855ed790aa114d023e537da","Shipper":"bd1e249833fb31a49622b3d95ddf5c88e40ef7562a705e62fa1c2638114561ba","Value":500,"State":"Created","ReportByCustomer":"","ReportByShipper":"","__v":0}'
+[2020-11-17 15:03:48] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 15:03:50] [[32minfo[39m] login sucessful : 'Customer1'
+[2020-11-17 15:03:54] [[32minfo[39m] API order/create : undefined
+[2020-11-17 15:03:55] [[32minfo[39m] API order/create sucessful : '{"_id":"5fb383eb7fb10c1ef45d69a1","ID":1605600235633,"Customer":"75f2195bf4259e5f99dc39631c74304320999b86c855ed790aa114d023e537da","Shipper":"91c1b1d0eb6f78ae678fcca923254aedbfb3c676f92e32fc86ac24f2a0fa0952","Value":500,"State":"Created","ReportByCustomer":"","ReportByShipper":"","__v":0}'
+[2020-11-17 15:03:58] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:04:00] [[32minfo[39m] API get order/requestIDbyCustomer : undefined
+[2020-11-17 15:04:06] [[32minfo[39m] API put order/:ID/report : undefined
+[2020-11-17 15:04:08] [[32minfo[39m] API get order/requestIDbyCustomer : undefined
+[2020-11-17 15:04:11] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 15:04:20] [[32minfo[39m] API user/login : 'Shipper1'
+[2020-11-17 15:04:20] [[32minfo[39m] login sucessful : 'Shipper1'
+[2020-11-17 15:04:24] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:04:24] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:04:32] [[32minfo[39m] API put order/:ID/report : undefined
+[2020-11-17 15:04:34] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:06:47] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:06:48] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:10:28] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:10:29] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:10:39] [[32minfo[39m] API put order/:ID/setstate : undefined
+[2020-11-17 15:10:40] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:11:13] [[32minfo[39m] API put order/:ID/setstate : undefined
+[2020-11-17 15:11:16] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:11:19] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:11:20] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:11:20] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:11:25] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:11:25] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:11:26] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:11:26] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:11:26] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:11:26] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:11:40] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 15:11:45] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 15:11:49] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:11:49] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:11:49] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:11:54] [[32minfo[39m] API put order/:ID/setstate : undefined
+[2020-11-17 15:11:55] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:12:00] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 15:12:06] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:12:07] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:12:07] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:12:10] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 15:12:21] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:12:22] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:12:22] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:12:45] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:12:46] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:12:46] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:12:53] [[32minfo[39m] API user/login : 'Shipper1'
+[2020-11-17 15:12:53] [[32minfo[39m] login sucessful : 'Shipper1'
+[2020-11-17 15:12:58] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 15:12:58] [[32minfo[39m] err : TypeError: Cannot read property 'ID' of null
+    at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\src\routes\order.js:97:39
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9)
+[2020-11-17 15:12:59] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 15:12:59] [[32minfo[39m] err : CastError: Cast to Number failed for value "null" at path "ID" for model "Order"
+    at model.Query.exec (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4380:21)
+    at model.Query.Query.then (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4472:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) {
+  messageFormat: undefined,
+  stringValue: '"null"',
+  kind: 'Number',
+  value: 'null',
+  path: 'ID',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:382:12)
+      at SchemaNumber.SchemaType.applySetters (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1075:12)
+      at SchemaNumber.SchemaType._castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1510:15)
+      at SchemaNumber.castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:436:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1477:20)
+      at cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast.js:331:32)
+      at model.Query.Query.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4781:12)
+      at model.Query.Query._castConditions (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:1873:10)
+      at model.Query.<anonymous> (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:2130:8)
+      at model.Query._wrappedThunk [as _findOne] (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\helpers\query\wrapThunk.js:16:8)
+      at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\kareem\index.js:369:33
+      at processTicksAndRejections (internal/process/task_queues.js:79:11) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
