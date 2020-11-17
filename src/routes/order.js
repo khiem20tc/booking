@@ -4,6 +4,7 @@ const { OrderEntity } = require("../models");
 const { checkAuth } = require("../middlewares");
 const { verifyToken } = require("../utils");
 const { UserEntity } = require("../models/User");
+const { log } = require("../middlewares");
 const Order = require("../models/Order");
 
 router.all("/", function (req, res, next) {
@@ -17,6 +18,7 @@ router.post(
   (req, res, next) => checkAuth(req, res, next, "customer"),
   async (req, res) => {
     try {
+      log("API order/create");
       const orderProcessing = await OrderEntity.find({
         $or: [
           { State: "Created" },
@@ -50,13 +52,15 @@ router.post(
         ReportByCustomer: "",
         ReportByShipper: "",
       });
-      const order_ = await OrderEntity.findOne({ ID: req.body.ID });
+      const order_ = await OrderEntity.findOne({ ID: ID });
       if (!order_) {
         const savedOrder = await order.save();
+        log("API order/create sucessful", JSON.stringify(savedOrder));
         return res.status(200).json(savedOrder);
       }
     } catch (err) {
       console.log(err);
+      log("err", err);
       return res.status(400).json({ msg: err });
     }
   }
@@ -64,15 +68,18 @@ router.post(
 
 router.get("/", async (req, res) => {
   try {
+    log("API get order");
     const order = await OrderEntity.find();
     return res.status(200).json(order);
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ msg: err });
   }
 });
 
 router.get("/requestIDbyShipper", async (req, res) => {
   try {
+    log("API get order/requestIDbyShipper");
     const token = req.headers.authorization.split(" ")[1];
     const decode = await verifyToken(token);
     const order = await OrderEntity.findOne({
@@ -89,12 +96,14 @@ router.get("/requestIDbyShipper", async (req, res) => {
     });
     return res.status(200).json(order.ID);
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ msg: err });
   }
 });
 
 router.get("/requestIDbyCustomer", async (req, res) => {
   try {
+    log("API get order/requestIDbyCustomer");
     const token = req.headers.authorization.split(" ")[1];
     const decode = await verifyToken(token);
     const order = await OrderEntity.find({
@@ -105,12 +114,14 @@ router.get("/requestIDbyCustomer", async (req, res) => {
     });
     return res.status(200).json(order);
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ msg: err });
   }
 });
 
 router.get("/orderListByUser", async (req, res) => {
   try {
+    log("API get order/orderListByUser");
     const token = req.headers.authorization.split(" ")[1];
     const decode = await verifyToken(token);
     console.log(decode);
@@ -122,15 +133,18 @@ router.get("/orderListByUser", async (req, res) => {
     }
     return res.status(200).json(order);
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ msg: err });
   }
 });
 
 router.get("/:ID", async (req, res) => {
   try {
+    log("API get order/:ID");
     const order = await OrderEntity.findOne({ ID: req.params.ID });
     return res.status(200).json(order);
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ msg: err });
   }
 });
@@ -140,6 +154,7 @@ router.put(
   (req, res, next) => checkAuth(req, res, next, "shipper"),
   async (req, res) => {
     try {
+      log("API put order/:ID/setstate");
       const order_ = await OrderEntity.findOne({ ID: req.params.ID });
       if (req.user.address == order_.Shipper) {
         const order = await OrderEntity.updateOne(
@@ -155,6 +170,7 @@ router.put(
         return res.status(400).json({ msg: "User is invalid" });
       }
     } catch (err) {
+      log("err", err);
       return res.status(400).json({ msg: err });
     }
   }
@@ -165,6 +181,7 @@ router.put(
   (req, res, next) => checkAuth(req, res, next, "customer"),
   async (req, res) => {
     try {
+      log("API put order/:ID/cancel");
       const order_ = await OrderEntity.findOne({ ID: req.params.ID });
       if (req.user.address == order_.Customer) {
         const order = await OrderEntity.updateOne(
@@ -180,6 +197,7 @@ router.put(
         return res.status(400).json({ msg: "User is invalid" });
       }
     } catch (err) {
+      log("err", err);
       return res.status(400).json({ msg: err });
     }
   }
@@ -187,6 +205,7 @@ router.put(
 
 router.put("/:ID/report", async (req, res) => {
   try {
+    log("API put order/:ID/report");
     const token = req.headers.authorization.split(" ")[1];
     const decode = await verifyToken(token);
     const order_ = await OrderEntity.findOne({ ID: req.params.ID });
@@ -214,6 +233,7 @@ router.put("/:ID/report", async (req, res) => {
       return res.status(400).json({ msg: "User is invalid" });
     }
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ msg: err });
   }
 });

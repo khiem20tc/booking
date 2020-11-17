@@ -1,6 +1,21 @@
-[2020-11-17 14:16:51] [[32minfo[39m] signin : 'Customer1'
-[2020-11-17 14:16:52] [[32minfo[39m] token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmEzZDA2NTgyZmFjYTMyMTRlYmU3ZWQiLCJpYXQiOjE2MDU1OTc0MTJ9.WH-jEo1yJ3xy3we7xhIP3Xdydt0IC_C_E0jTEHcyrNU'
-[2020-11-17 14:16:56] [[32minfo[39m] signin : 'Customer100'
-[2020-11-17 14:16:56] [[32minfo[39m] Username is incorrect : undefined
-[2020-11-17 14:17:13] [[32minfo[39m] signin : 'Shipper1'
-[2020-11-17 14:17:13] [[32minfo[39m] token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmEzZDA1NjgyZmFjYTMyMTRlYmU3ZWMiLCJpYXQiOjE2MDU1OTc0MzN9.Gb7vRcxXOdiNTEI6YPAAHF7nb3Cewm1QxGLkaLDYf4s'
+[2020-11-17 14:36:04] [[32minfo[39m] API: get user : undefined
+[2020-11-17 14:39:01] [[32minfo[39m] API get user : undefined
+[2020-11-17 14:39:22] [[32minfo[39m] API user/login : 'Shipper1'
+[2020-11-17 14:39:22] [[32minfo[39m] login sucessful : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmEzZDA1NjgyZmFjYTMyMTRlYmU3ZWMiLCJpYXQiOjE2MDU1OTg3NjJ9.oGtHXgZYSGGuG7VxfF6xFOt0gWXznrbJTPOs4YB5nig'
+[2020-11-17 14:39:29] [[32minfo[39m] API user/login : 'Shipper10'
+[2020-11-17 14:39:30] [[32minfo[39m] Username is incorrect : 'Shipper10'
+[2020-11-17 14:39:34] [[32minfo[39m] API user/login : 'Shipper2'
+[2020-11-17 14:39:34] [[32minfo[39m] Username is incorrect : 'Shipper2'
+[2020-11-17 14:40:13] [[32minfo[39m] API user/login : 'Shipper2'
+[2020-11-17 14:40:15] [[32minfo[39m] Username is incorrect : 'Shipper2'
+[2020-11-17 14:43:01] [[32minfo[39m] API get user : undefined
+[2020-11-17 14:43:20] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 14:43:20] [[32minfo[39m] login sucessful : 'Customer1'
+[2020-11-17 14:47:39] [[32minfo[39m] API order/create : undefined
+[2020-11-17 14:55:06] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 14:55:16] [[32minfo[39m] login sucessful : 'Customer1'
+[2020-11-17 14:55:55] [[32minfo[39m] API order/create : undefined
+[2020-11-17 14:56:02] [[32minfo[39m] API order/create : undefined
+[2020-11-17 14:56:38] [[32minfo[39m] API order/create : undefined
+[2020-11-17 14:57:18] [[32minfo[39m] API order/create : undefined
+[2020-11-17 14:57:19] [[32minfo[39m] API order/create sucessful : '{"_id":"5fb3825e68adc82d08fcdf1d","ID":1605599838758,"Customer":"75f2195bf4259e5f99dc39631c74304320999b86c855ed790aa114d023e537da","Shipper":"bd1e249833fb31a49622b3d95ddf5c88e40ef7562a705e62fa1c2638114561ba","Value":500,"State":"Created","ReportByCustomer":"","ReportByShipper":"","__v":0}'

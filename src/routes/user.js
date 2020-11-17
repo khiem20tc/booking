@@ -37,14 +37,17 @@ router.put("/setAvatar/:id", upload.single("csv"), async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
+    log("API get user");
     const user = await UserEntity.find();
     return res.status(200).json(user);
   } catch (err) {
+    log("err", err);
     return res.status(400).json({ error: err });
   }
 });
 
 router.post("/signup", async (req, res) => {
+  log("API user/signup", req.body.userName);
   try {
     if (!req.body.password)
       res.status(400).json({ error: "Please set your password" });
@@ -60,10 +63,13 @@ router.post("/signup", async (req, res) => {
     const user_ = await UserEntity.findOne({ userName: req.body.userName });
 
     if (user_ == null) {
-      log("signup", req.body.userName);
+      log("signin sucessful", req.body.userName);
       const savedUser = await user.save();
       return res.status(200).json(savedUser);
-    } else return res.status(400).json({ msg: "User is already exist" });
+    } else {
+      log("signin fail", req.body.userName);
+      return res.status(400).json({ msg: "User is already exist" });
+    }
   } catch (err) {
     log("err", err);
     return res.json({ error: err });
@@ -71,22 +77,22 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  log("signin", req.body.userName);
+  log("API user/login", req.body.userName);
   const user = await UserEntity.findOne({ userName: req.body.userName });
   console.log(user);
   if (user == null) {
-    log("Username is incorrect");
+    log("Username is incorrect", req.body.userName);
     return res.status(400).send("User is not found");
   }
   try {
     if (await comparePassword(req.body.password, user.password)) {
       const token = await generateToken(user);
-      log("token", token);
+      log("login sucessful", req.body.userName);
       return res
         .status(200)
         .json({ message: `Welcome ${user.userName}`, token: token });
     } else {
-      log("Password is incorrect");
+      log("Password is incorrect", req.body.password);
       return res.status(500).send("Password wrong !! Please try again");
     }
   } catch (err) {
@@ -107,9 +113,12 @@ router.post("/checkrole", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
+    log("API get user/:id", req.params.id);
     const user = await UserEntity.find({ _id: req.params.id });
+    log("sucessful", user);
     return res.status(200).json(user);
   } catch (err) {
+    log("failed", user);
     res.json({ error: err });
     return res.status(404);
   }
@@ -120,9 +129,11 @@ router.delete(
   (req, res, next) => checkAuth(req, res, next, "manager"),
   async (req, res) => {
     try {
+      log("API delete user/id");
       const userRemoved = await UserEntity.remove({ _id: req.params.id });
       return res.status(200).json({ msg: "deleted" });
     } catch (err) {
+      log("err", err);
       return res.status(400).json({ error: err });
     }
   }
@@ -150,6 +161,7 @@ router.put(
   (req, res, next) => checkAuth(req, res, next, "manager"),
   async (req, res) => {
     try {
+      log("API setHistory user/id");
       const userUpdated = await UserEntity.updateOne(
         { address: req.params.address },
         {
@@ -160,6 +172,7 @@ router.put(
       );
       return res.status(200).json({ message: "Set history successfully" });
     } catch (err) {
+      log("err", err);
       return res.status(400).json({ error: err });
     }
   }
