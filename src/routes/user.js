@@ -49,8 +49,7 @@ router.get("/", async (req, res) => {
 router.post("/signup", async (req, res) => {
   log("API user/signup", req.body.userName);
   try {
-    if (!req.body.password)
-      res.status(400).json({ error: "Please set your password" });
+    if (!req.body.password) res.status(400).send("Please set your password");
     const hashedPassword = await hashPassword(req.body.password);
     let address = keccak256(req.body.userName).toString("hex");
 
@@ -68,7 +67,7 @@ router.post("/signup", async (req, res) => {
       return res.status(200).json(savedUser);
     } else {
       log("signin fail", req.body.userName);
-      return res.status(400).json({ msg: "Username is already exist" });
+      return res.status(400).send("Username is already exist");
     }
   } catch (err) {
     log("err", err);
@@ -82,7 +81,7 @@ router.post("/login", async (req, res) => {
   console.log(user);
   if (user == null) {
     log("Username is incorrect", req.body.userName);
-    return res.status(400).json({ message: "Username is not found" });
+    return res.status(400).send("Username is not found");
   }
   try {
     if (await comparePassword(req.body.password, user.password)) {
@@ -131,7 +130,7 @@ router.delete(
     try {
       log("API delete user/id");
       const userRemoved = await UserEntity.remove({ _id: req.params.id });
-      return res.status(200).json({ msg: "deleted" });
+      return res.status(200).send("Deleted sucessfully");
     } catch (err) {
       log("err", err);
       return res.status(400).json({ error: err });
@@ -170,7 +169,7 @@ router.put(
           },
         }
       );
-      return res.status(200).json({ message: "Set history successfully" });
+      return res.status(200).send("Set history successfully");
     } catch (err) {
       log("err", err);
       return res.status(400).json({ error: err });

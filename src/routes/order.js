@@ -38,7 +38,7 @@ router.post(
       });
 
       if (!freeShipperList[0])
-        return res.status(400).json({ message: "Shipper is not available" });
+        return res.status(400).send("Shipper is not available");
 
       console.log(freeShipperList);
 
@@ -64,7 +64,7 @@ router.post(
     } catch (err) {
       console.log(err);
       log("err", err);
-      return res.status(400).json({ msg: "Failed" });
+      return res.status(400).send("Failed");
     }
   }
 );
@@ -170,7 +170,7 @@ router.put(
         );
         return res.status(200).json(req.body.State);
       } else {
-        return res.status(400).json({ msg: "User is invalid" });
+        return res.status(400).send("User is invalid");
       }
     } catch (err) {
       log("err", err);
@@ -195,9 +195,9 @@ router.put(
             },
           }
         );
-        return res.status(200).send({ massage: "Cancel sucessfully" });
+        return res.status(200).send("Cancel sucessfully");
       } else {
-        return res.status(400).json({ msg: "User is invalid" });
+        return res.status(400).send("User is invalid");
       }
     } catch (err) {
       log("err", err);
@@ -233,7 +233,7 @@ router.put("/:ID/report", async (req, res) => {
       );
       return res.status(200).json(req.body.Report);
     } else {
-      return res.status(400).json({ msg: "User is invalid" });
+      return res.status(400).send("User is invalid");
     }
   } catch (err) {
     log("err", err);

@@ -840,3 +840,217 @@
 [2020-11-17 17:01:03] [[32minfo[39m] API get user : undefined
 [2020-11-17 17:01:07] [[32minfo[39m] API delete user/id : undefined
 [2020-11-17 17:01:07] [[32minfo[39m] API get user : undefined
+[2020-11-17 17:14:57] [[32minfo[39m] API user/signup : 'Customer1'
+[2020-11-17 17:14:57] [[32minfo[39m] signin fail : 'Customer1'
+[2020-11-17 17:15:11] [[32minfo[39m] API user/login : 'kjgkj'
+[2020-11-17 17:15:11] [[32minfo[39m] Username is incorrect : 'kjgkj'
+[2020-11-17 17:15:20] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 17:15:20] [[32minfo[39m] Password is incorrect : 'abcd'
+[2020-11-17 17:16:28] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 17:16:29] [[32minfo[39m] Password is incorrect : 'abcd'
+[2020-11-17 17:16:33] [[32minfo[39m] API user/login : 'Customer'
+[2020-11-17 17:16:33] [[32minfo[39m] Username is incorrect : 'Customer'
+[2020-11-17 17:19:29] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 17:19:29] [[32minfo[39m] Password is incorrect : 'abcd'
+[2020-11-17 17:19:32] [[32minfo[39m] API user/login : 'Customer1'
+[2020-11-17 17:19:33] [[32minfo[39m] login sucessful : 'Customer1'
+[2020-11-17 17:19:37] [[32minfo[39m] API order/create : undefined
+[2020-11-17 17:19:38] [[32minfo[39m] API order/create sucessful : '{"_id":"5fb3a3b98aef97375cac28e7","ID":1605608377766,"Customer":"75f2195bf4259e5f99dc39631c74304320999b86c855ed790aa114d023e537da","Shipper":"91c1b1d0eb6f78ae678fcca923254aedbfb3c676f92e32fc86ac24f2a0fa0952","Value":500,"State":"Created","ReportByCustomer":"","ReportByShipper":"","__v":0}'
+[2020-11-17 17:19:39] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:19:41] [[32minfo[39m] API order/create : undefined
+[2020-11-17 17:19:42] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:19:42] [[32minfo[39m] err : CastError: Cast to Number failed for value "undefined" at path "ID" for model "Order"
+    at model.Query.exec (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4380:21)
+    at model.Query.Query.then (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4472:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) {
+  messageFormat: undefined,
+  stringValue: '"undefined"',
+  kind: 'Number',
+  value: 'undefined',
+  path: 'ID',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:382:12)
+      at SchemaNumber.SchemaType.applySetters (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1075:12)
+      at SchemaNumber.SchemaType._castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1510:15)
+      at SchemaNumber.castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:436:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1477:20)
+      at cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast.js:331:32)
+      at model.Query.Query.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4781:12)
+      at model.Query.Query._castConditions (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:1873:10)
+      at model.Query.<anonymous> (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:2130:8)
+      at model.Query._wrappedThunk [as _findOne] (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\helpers\query\wrapThunk.js:16:8)
+      at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\kareem\index.js:369:33
+      at processTicksAndRejections (internal/process/task_queues.js:79:11) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+[2020-11-17 17:19:44] [[32minfo[39m] API order/create : undefined
+[2020-11-17 17:19:45] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:19:45] [[32minfo[39m] err : CastError: Cast to Number failed for value "undefined" at path "ID" for model "Order"
+    at model.Query.exec (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4380:21)
+    at model.Query.Query.then (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4472:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) {
+  messageFormat: undefined,
+  stringValue: '"undefined"',
+  kind: 'Number',
+  value: 'undefined',
+  path: 'ID',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:382:12)
+      at SchemaNumber.SchemaType.applySetters (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1075:12)
+      at SchemaNumber.SchemaType._castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1510:15)
+      at SchemaNumber.castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:436:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1477:20)
+      at cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast.js:331:32)
+      at model.Query.Query.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4781:12)
+      at model.Query.Query._castConditions (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:1873:10)
+      at model.Query.<anonymous> (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:2130:8)
+      at model.Query._wrappedThunk [as _findOne] (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\helpers\query\wrapThunk.js:16:8)
+      at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\kareem\index.js:369:33
+      at processTicksAndRejections (internal/process/task_queues.js:79:11) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+[2020-11-17 17:19:47] [[32minfo[39m] API get order/requestIDbyCustomer : undefined
+[2020-11-17 17:19:50] [[32minfo[39m] API put order/:ID/cancel : undefined
+[2020-11-17 17:19:51] [[32minfo[39m] API get order/requestIDbyCustomer : undefined
+[2020-11-17 17:19:54] [[32minfo[39m] API order/create : undefined
+[2020-11-17 17:19:55] [[32minfo[39m] API order/create sucessful : '{"_id":"5fb3a3ca8aef97375cac28e8","ID":1605608394990,"Customer":"75f2195bf4259e5f99dc39631c74304320999b86c855ed790aa114d023e537da","Shipper":"bd1e249833fb31a49622b3d95ddf5c88e40ef7562a705e62fa1c2638114561ba","Value":500,"State":"Created","ReportByCustomer":"","ReportByShipper":"","__v":0}'
+[2020-11-17 17:19:56] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:19:57] [[32minfo[39m] API order/create : undefined
+[2020-11-17 17:19:59] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:19:59] [[32minfo[39m] err : CastError: Cast to Number failed for value "undefined" at path "ID" for model "Order"
+    at model.Query.exec (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4380:21)
+    at model.Query.Query.then (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4472:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) {
+  messageFormat: undefined,
+  stringValue: '"undefined"',
+  kind: 'Number',
+  value: 'undefined',
+  path: 'ID',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:382:12)
+      at SchemaNumber.SchemaType.applySetters (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1075:12)
+      at SchemaNumber.SchemaType._castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1510:15)
+      at SchemaNumber.castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:436:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1477:20)
+      at cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast.js:331:32)
+      at model.Query.Query.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4781:12)
+      at model.Query.Query._castConditions (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:1873:10)
+      at model.Query.<anonymous> (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:2130:8)
+      at model.Query._wrappedThunk [as _findOne] (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\helpers\query\wrapThunk.js:16:8)
+      at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\kareem\index.js:369:33
+      at processTicksAndRejections (internal/process/task_queues.js:79:11) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+[2020-11-17 17:20:01] [[32minfo[39m] API get order/requestIDbyCustomer : undefined
+[2020-11-17 17:20:03] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 17:20:14] [[32minfo[39m] API user/login : 'Shipper1'
+[2020-11-17 17:20:15] [[32minfo[39m] login sucessful : 'Shipper1'
+[2020-11-17 17:20:19] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 17:20:19] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:20:27] [[32minfo[39m] API user/login : 'Shipper1'
+[2020-11-17 17:20:27] [[32minfo[39m] login sucessful : 'Shipper1'
+[2020-11-17 17:20:32] [[32minfo[39m] API put order/:ID/setstate : undefined
+[2020-11-17 17:20:32] [[32minfo[39m] err : CastError: Cast to Number failed for value "undefined" at path "ID" for model "Order"
+    at model.Query.exec (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4380:21)
+    at model.Query.Query.then (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4472:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at runNextTicks (internal/process/task_queues.js:66:3)
+    at processImmediate (internal/timers.js:429:9) {
+  messageFormat: undefined,
+  stringValue: '"undefined"',
+  kind: 'Number',
+  value: 'undefined',
+  path: 'ID',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:382:12)
+      at SchemaNumber.SchemaType.applySetters (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1075:12)
+      at SchemaNumber.SchemaType._castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1510:15)
+      at SchemaNumber.castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:436:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1477:20)
+      at cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast.js:331:32)
+      at model.Query.Query.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4781:12)
+      at model.Query.Query._castConditions (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:1873:10)
+      at model.Query.<anonymous> (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:2130:8)
+      at model.Query._wrappedThunk [as _findOne] (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\helpers\query\wrapThunk.js:16:8)
+      at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\kareem\index.js:369:33
+      at processTicksAndRejections (internal/process/task_queues.js:79:11)
+      at runNextTicks (internal/process/task_queues.js:66:3)
+      at processImmediate (internal/timers.js:429:9) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+[2020-11-17 17:20:34] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:20:34] [[32minfo[39m] err : CastError: Cast to Number failed for value "undefined" at path "ID" for model "Order"
+    at model.Query.exec (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4380:21)
+    at model.Query.Query.then (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4472:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5) {
+  messageFormat: undefined,
+  stringValue: '"undefined"',
+  kind: 'Number',
+  value: 'undefined',
+  path: 'ID',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:382:12)
+      at SchemaNumber.SchemaType.applySetters (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1075:12)
+      at SchemaNumber.SchemaType._castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1510:15)
+      at SchemaNumber.castForQuery (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schema\number.js:436:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\schematype.js:1477:20)
+      at cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\cast.js:331:32)
+      at model.Query.Query.cast (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:4781:12)
+      at model.Query.Query._castConditions (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:1873:10)
+      at model.Query.<anonymous> (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\query.js:2130:8)
+      at model.Query._wrappedThunk [as _findOne] (D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\mongoose\lib\helpers\query\wrapThunk.js:16:8)
+      at D:\VBC\NodeJS\Booking\CodeBaseNodeJS\node_modules\kareem\index.js:369:33
+      at processTicksAndRejections (internal/process/task_queues.js:79:11) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+[2020-11-17 17:20:37] [[32minfo[39m] API get order/requestIDbyShipper : undefined
+[2020-11-17 17:20:37] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:20:40] [[32minfo[39m] API put order/:ID/setstate : undefined
+[2020-11-17 17:20:41] [[32minfo[39m] API get order/:ID : undefined
+[2020-11-17 17:20:47] [[32minfo[39m] API get order/orderListByUser : undefined
+[2020-11-17 17:20:47] [[32minfo[39m] API get order/orderListByUser : undefined
