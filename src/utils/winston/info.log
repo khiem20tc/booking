@@ -1,0 +1,6 @@
+[2020-11-17 14:16:51] [[32minfo[39m] signin : 'Customer1'
+[2020-11-17 14:16:52] [[32minfo[39m] token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmEzZDA2NTgyZmFjYTMyMTRlYmU3ZWQiLCJpYXQiOjE2MDU1OTc0MTJ9.WH-jEo1yJ3xy3we7xhIP3Xdydt0IC_C_E0jTEHcyrNU'
+[2020-11-17 14:16:56] [[32minfo[39m] signin : 'Customer100'
+[2020-11-17 14:16:56] [[32minfo[39m] Username is incorrect : undefined
+[2020-11-17 14:17:13] [[32minfo[39m] signin : 'Shipper1'
+[2020-11-17 14:17:13] [[32minfo[39m] token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmEzZDA1NjgyZmFjYTMyMTRlYmU3ZWMiLCJpYXQiOjE2MDU1OTc0MzN9.Gb7vRcxXOdiNTEI6YPAAHF7nb3Cewm1QxGLkaLDYf4s'

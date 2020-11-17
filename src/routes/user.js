@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const { log } = require("../middlewares");
 const { UserEntity } = require("../models");
 const { upload } = require("../middlewares");
 const {
@@ -59,30 +60,37 @@ router.post("/signup", async (req, res) => {
     const user_ = await UserEntity.findOne({ userName: req.body.userName });
 
     if (user_ == null) {
+      log("signup", req.body.userName);
       const savedUser = await user.save();
       return res.status(200).json(savedUser);
     } else return res.status(400).json({ msg: "User is already exist" });
   } catch (err) {
+    log("err", err);
     return res.json({ error: err });
   }
 });
 
 router.post("/login", async (req, res) => {
+  log("signin", req.body.userName);
   const user = await UserEntity.findOne({ userName: req.body.userName });
   console.log(user);
   if (user == null) {
+    log("Username is incorrect");
     return res.status(400).send("User is not found");
   }
   try {
     if (await comparePassword(req.body.password, user.password)) {
       const token = await generateToken(user);
+      log("token", token);
       return res
         .status(200)
         .json({ message: `Welcome ${user.userName}`, token: token });
     } else {
+      log("Password is incorrect");
       return res.status(500).send("Password wrong !! Please try again");
     }
   } catch (err) {
+    log("error", err);
     return res.status(400).json({ error: err });
   }
 });

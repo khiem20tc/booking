@@ -1,22 +1,27 @@
-require('dotenv').config()
+require("dotenv").config();
 
 //Application
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 //Database
-const DATABASE_NAME = process.env.DATABASE_NAME || 'Booking'
-const MONGO_URL = process.env.MONGO_URL || `mongodb+srv://khiem20tc:01239335976@cluster0.licvf.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
+const DATABASE_NAME = process.env.DATABASE_NAME || "Booking";
+const MONGO_URL =
+  process.env.MONGO_URL ||
+  `mongodb+srv://khiem20tc:01239335976@cluster0.licvf.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`;
+// const MONGO_URL =
+//   process.env.MONGO_URL ||
+//   `mongodb://127.0.0.1:27017/${DATABASE_NAME}?retryWrites=true&w=majority`;
 
 //Jsonwebtoken
-const PRIVATE_KEY = process.env.PRIVATE_KEY || 'huukhiem'
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "huukhiem";
 
 //bycrypt
-const SALT = process.env.SALT || 10
+const SALT = process.env.SALT || 10;
 
 module.exports = {
-    PORT,
-    DATABASE_NAME,
-    MONGO_URL,
-    PRIVATE_KEY,
-    SALT
-}
+  PORT,
+  DATABASE_NAME,
+  MONGO_URL,
+  PRIVATE_KEY,
+  SALT,
+};
