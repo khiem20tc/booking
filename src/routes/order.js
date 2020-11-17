@@ -37,6 +37,9 @@ router.post(
         $and: [{ role: "shipper" }, { address: { $nin: array } }],
       });
 
+      if (!freeShipperList[0])
+        return res.status(400).json({ message: "Shipper is not available" });
+
       console.log(freeShipperList);
 
       console.log(freeShipperList[0].address);
@@ -61,7 +64,7 @@ router.post(
     } catch (err) {
       console.log(err);
       log("err", err);
-      return res.status(400).json({ msg: err });
+      return res.status(400).json({ msg: "Failed" });
     }
   }
 );

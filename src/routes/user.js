@@ -68,7 +68,7 @@ router.post("/signup", async (req, res) => {
       return res.status(200).json(savedUser);
     } else {
       log("signin fail", req.body.userName);
-      return res.status(400).json({ msg: "User is already exist" });
+      return res.status(400).json({ msg: "Username is already exist" });
     }
   } catch (err) {
     log("err", err);
@@ -82,7 +82,7 @@ router.post("/login", async (req, res) => {
   console.log(user);
   if (user == null) {
     log("Username is incorrect", req.body.userName);
-    return res.status(400).send("User is not found");
+    return res.status(400).json({ message: "Username is not found" });
   }
   try {
     if (await comparePassword(req.body.password, user.password)) {
